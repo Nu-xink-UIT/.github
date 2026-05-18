@@ -37,7 +37,7 @@ The platform is engineered as a decoupled, microservices-based data ecosystem de
 * **DAG Scheduling & Recovery:** Complex Directed Acyclic Graphs (DAGs) orchestrated via **Airflow**, enforcing data-freshness dependencies, strict service level agreements (SLAs), and self-healing automated retry loops.
 * **ClickHouse Computation Optimization:** Utilizing advanced engines (`ReplacingMergeTree`, `AggregatingMergeTree`, `SummingMergeTree`) to guarantee automated background deduplication and real-time pre-aggregations (hourly averages, daily high/low tickers).
 * **CI/CD & GitOps Integration:** Fully automated CI/CD workflows using GitHub Actions.
-*
+
 ### 3. Data Governance, Quality
 * **Data Quality Framework:** Enforced mandatory integrity restrictions (`not_null`, `unique`) on operational schemas. Implemented specialized singular business rules to detect financial anomalies (e.g., sudden >50% price deviations within a 1-minute window).
 
