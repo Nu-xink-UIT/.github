@@ -39,7 +39,7 @@ The platform is engineered as a decoupled, microservices-based data ecosystem de
 * **CI/CD & GitOps Integration:** Fully automated CI/CD workflows using GitHub Actions.
 
 ### 3. Data Governance, Quality
-* **Data Quality Framework:** Enforced mandatory integrity restrictions (`not_null`, `unique`) on operational schemas. Implemented specialized singular business rules to detect financial anomalies (e.g., sudden >50% price deviations within a 1-minute window).
+* **Data Quality Framework:** Enforced mandatory integrity restrictions (`not_null`, `unique`) on operational schemas. Implemented specialized singular business rules to detect financial anomalies.
 
 
 ### 4. Data Serving
