@@ -15,9 +15,9 @@ The platform is engineered as a decoupled, microservices-based data ecosystem de
 
 
 ### 🔄 End-to-End Data Flow
-1. **Speed Layer (Real-time):** Source Data $\rightarrow$ Python Scrapers/Producers (K8s Pods) $\rightarrow$ Apache Kafka Topics $\rightarrow$ ClickHouse Kafka Engine $\rightarrow$ Materialized Views (MV) $\rightarrow$ Columnar Storage. (End-to-end latency: < 5s).
-2. **Batch Layer (Reconciliation):** Raw Ingestion Files $\rightarrow$ Google Cloud Storage (GCS) Data Lake $\rightarrow$ dbt Scheduled Core Jobs (Every 6 Hours) $\rightarrow$ ClickHouse Table Functions.
-3. **Serving & Presentation:** ClickHouse OLAP Engines $\rightarrow$ Grafana Real-time Dashboards.
+1. **Speed Layer (Real-time):** Automated Python scrapers containerized on Kubernetes pods continuously ingest high-frequency source data and publish events to Apache Kafka topics. The native ClickHouse Kafka Engine, combined with Materialized Views, streams this data directly into columnar tables, achieving an end-to-end processing latency of under 5 seconds.
+2. **Batch Layer (Reconciliation):** Raw ingestion files are persistently backed up to a Google Cloud Storage data lake. Scheduled dbt core jobs execute every 6 hours, utilizing ClickHouse table functions to fetch and re-sync this historical data to eliminate any streaming message loss.
+3. **Serving & Presentation:** The optimized ClickHouse OLAP engine processes multi-dimensional analytical queries, delivering low-latency metrics directly to downstream Grafana and Google Looker real-time dashboards.
 
 ---
 
@@ -27,9 +27,9 @@ To maximize maintainability and scalability, our ecosystem is modularized into t
 
 | Repository | Focus Area | Core Tech Stack |
 | :--- | :--- | :--- |
-| [🔗 platform-infra](https://github.com/YOUR_ORG/platform-infra) | **Infrastructure as Code & Cloud Ops** | GCP, GKE, Kubernetes (K8s), Docker, Cloud Networking, Prometheus |
-| [🔗 kafka-integration](https://github.com/YOUR_ORG/kafka-integration) | **Real-time Data Ingestion & Streaming** | Apache Kafka, Python, Scrapy, Custom APIs, K8s Pods |
-| [🔗 dbt-clickhouse](https://github.com/YOUR_ORG/dbt-clickhouse) | **Modern Data Warehousing & Transformation** | dbt Core, ClickHouse OLAP, Medallion Architecture, SQL |
+| [🔗 platform-infra](https://github.com/Nu-xink-UIT/platform-infra) | **Infrastructure as Code & Cloud Ops** | GCP, GKE, Kubernetes (K8s), Docker, Cloud Networking, Prometheus |
+| [🔗 kafka-integration](https://github.com/Nu-xink-UIT/kafka-intergration) | **Real-time Data Ingestion & Streaming** | Apache Kafka, Python, Scrapy, Custom APIs, K8s Pods |
+| [🔗 dbt-clickhouse](https://github.com/Nu-xink-UIT/dbt-clickhouse) | **Modern Data Warehousing & Transformation** | dbt Core, ClickHouse OLAP, Medallion Architecture, SQL |
 
 ---
 
