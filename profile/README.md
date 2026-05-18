@@ -21,6 +21,33 @@ The platform is engineered as a decoupled, microservices-based data ecosystem de
 
 ---
 
+## 🛠️ Production-Grade Implementation Details
+
+### 1. Advanced Data Modeling & Optimization
+* **Audit & Discovery:** Multi-source schema synchronization handling flat/nested JSON payloads. Standardized core financial metrics (`price_buy`, `price_sell`, `unit`, `source_name`, `gold_type`) to build uniform target schemas.
+* **Business Glossary & Reference Base Price:** Implemented a robust data resolution strategy utilizing weighted averages and outlier removal algorithms to protect the analytics layer against single-source data signal distortion.
+* **Medallion Architecture Pattern:**
+  * **Bronze:** Optimized Kafka Connect and native Kafka Engines running concurrent streams.
+  * **Silver:** Modular `dbt` jobs managing automated data deduplication, strict currency conversion units (VND/Lượng and USD/oz), and active timezone alignment.
+  * **Gold (Star Schema):** Built high-performance central fact tables (`fact_gold_prices`) connected to optimized dimension attributes (`dim_sources`, `dim_gold_types`, `dim_date`, `dim_time`).
+* **Physical ClickHouse Optimization:** Heavy partitions structured on multi-index Sorting Keys (`timestamp`, `gold_type`), enabling complex sub-range analytical query responses in **under 100ms**.
+
+### 2. Orchestration & Transform
+* **Kubernetes Deployment:** Specialized multi-stage `dbt` Docker images deployed via declarative K8s manifests (`ConfigMaps`, `Secrets`), ensuring decoupled environment configurations.
+* **DAG Scheduling & Recovery:** Complex Directed Acyclic Graphs (DAGs) orchestrated via **Airflow**, enforcing data-freshness dependencies, strict service level agreements (SLAs), and self-healing automated retry loops.
+* **ClickHouse Computation Optimization:** Utilizing advanced engines (`ReplacingMergeTree`, `AggregatingMergeTree`, `SummingMergeTree`) to guarantee automated background deduplication and real-time pre-aggregations (hourly averages, daily high/low tickers).
+* **CI/CD & GitOps Integration:** Fully automated CI/CD workflows using GitHub Actions.
+*
+### 3. Data Governance, Quality
+* **Data Quality Framework:** Enforced mandatory integrity restrictions (`not_null`, `unique`) on operational schemas. Implemented specialized singular business rules to detect financial anomalies (e.g., sudden >50% price deviations within a 1-minute window).
+
+
+### 4. Data Serving
+* **Real-time Analytics:** Highly responsive Grafana Dashboards displaying real-time financial market tickers, OHLC (Open-High-Low-Close) candlesticks, and localized arbitrage detection graphs across competing sellers.
+
+
+---
+
 ## 📂 Repository Navigation
 
 To maximize maintainability and scalability, our ecosystem is modularized into three specialized public repositories:
