@@ -10,7 +10,8 @@ Our infrastructure transitions seamlessly from Cloud Ingestion and Event Streami
 
 The platform is engineered as a decoupled, microservices-based data ecosystem deployed on Google Cloud Platform (GCP) and fully containerized via Kubernetes.
 
-// data flow demonstation will be deployed here.
+<img width="6644" height="2964" alt="image" src="https://github.com/user-attachments/assets/a3c44715-87ef-4faa-ac5b-5134b12fd510" />
+
 
 
 
