@@ -46,9 +46,9 @@ The platform is engineered as a decoupled, microservices-based data ecosystem de
 ### 4. Data Serving
 * **Real-time Analytics:** Highly responsive Grafana Dashboards displaying real-time financial market tickers, OHLC (Open-High-Low-Close) candlesticks, and localized arbitrage detection graphs across competing sellers.
 
-[New dashboard - Dashboards - Grafana.pdf](https://github.com/user-attachments/files/28230442/New.dashboard.-.Dashboards.-.Grafana.pdf)
+<img width="3016" height="1604" alt="Candlestick - Dashboards - Grafana" src="https://github.com/user-attachments/assets/a4fb27a1-cd0a-4f38-aedb-9e5f775fb0ef" />
 
-[Serving - Dashboards - Grafana.pdf](https://github.com/user-attachments/files/28230458/Serving.-.Dashboards.-.Grafana.pdf)
+<img width="3016" height="1604" alt="Serving - Dashboards - Grafana" src="https://github.com/user-attachments/assets/0484cdf0-0894-4d3c-989a-5c9d5e08405f" />
 
 
 
